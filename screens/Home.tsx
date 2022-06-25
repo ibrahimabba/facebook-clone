@@ -1,20 +1,13 @@
 import { StyleSheet, View, ScrollView, Dimensions } from 'react-native';
-import { useGetPostsQuery } from '../store/services/posts'
-import { useAppSelector } from '../hooks/react-redux-hooks';
+import { useDispatch, useSelector } from "../hooks/react-redux-hooks";
 //import PostTool from '../components/PostTool'
 //import Stories from '../components/Stories'
 //import RecommendFriends from '../components/RecommendFriends'
 //import Item from '../components/Item'
 
 export default function Home() {
-    const { isLoading, error, isFetching, isSuccess, data, isError } = useGetPostsQuery()
-    const postsReducer = useAppSelector(state => state.postsReducer)
-
-    if (!isLoading && !isFetching) {
-        console.log(data)
-        console.log('reducer', postsReducer)
-    }
-
+    const posts = useSelector(state => state.postsReducer);
+    const dispatch = useDispatch();
     //if (data.length === 0) return <View></View>
     return (
         <View>
