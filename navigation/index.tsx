@@ -6,6 +6,7 @@ import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
 import HeaderComponent from '../components/HeaderComponent';
 import { RootStackParamList } from '../types';
+import colors from "../constants/Colors";
 import LinkingConfiguration from './LinkingConfiguration';
 
 import TopTabNavigator from "./TopTabNavigator";
@@ -19,9 +20,9 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
     ...Theme,
     colors: {
       ...Theme.colors,
-      background: '#242526',
-      card: '#242526',
-      border: '#242526'
+      background: colors.dark.background,
+      card: colors.dark.card,
+      border: colors.dark.card
     },
   };
 
