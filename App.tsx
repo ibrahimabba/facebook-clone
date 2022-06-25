@@ -2,10 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Provider } from "react-redux";
+import { BASE_URL } from './constants'
+import axios from 'axios';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
 import store from "./store/store";
+
+axios.defaults.baseURL = BASE_URL
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
