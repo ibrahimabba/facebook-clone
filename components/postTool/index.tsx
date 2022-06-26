@@ -4,6 +4,8 @@ import { useSelector } from '../../hooks/react-redux-hooks'
 import FontAweSome5 from '@expo/vector-icons/FontAwesome5'
 import navigation from '../../navigation/navigationRef'
 import Colors from '../../constants/Colors'
+const usr = require('../../assets/images/user.png')
+
 
 type Props = {
     isWriteToPage?: boolean;
@@ -14,9 +16,10 @@ type Props = {
 
 export default function PostTool({ isWriteToAnyOne, userX, isWriteToPage, page }: Props) {
 
-    const user = useSelector(state => state.userReducer.user?.user)
+    const user = useSelector(state => state.userReducer.user)
 
     const [inputBgColor, setInputBgColor] = useState(Colors.dark.card)
+
 
     const onLiveStreamPressHandler = () => {
         //navigation.navigate('LiveStream')
@@ -44,7 +47,7 @@ export default function PostTool({ isWriteToAnyOne, userX, isWriteToPage, page }
         <View style={styles.container}>
             <View style={styles.postToolWrapper}>
                 <TouchableOpacity activeOpacity={0.5} style={styles.userAvatarWrapper}>
-                    <Image source={{ uri: user?.avatar_url }} style={styles.userAvatar} ></Image>
+                    <Image source={usr} style={styles.userAvatar} ></Image>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={isWriteToAnyOne ? onPressPostToAnyOneHandler : onFullPostToolPressHandler} style={styles.postInputWrapper}>
                     <View style={{ ...styles.postInput, backgroundColor: inputBgColor }}>
@@ -81,9 +84,9 @@ export default function PostTool({ isWriteToAnyOne, userX, isWriteToPage, page }
 const styles = StyleSheet.create({
     container: {
         borderTopColor: '#ddd',
-        borderTopWidth: 0.5,
+        borderTopWidth: 0.3,
         borderBottomColor: '#ddd',
-        borderBottomWidth: 0.5,
+        borderBottomWidth: 0.3,
         marginTop: 10,
         backgroundColor: Colors.dark.card
     },
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         height: 40,
         borderTopColor: '#ddd',
-        borderTopWidth: 0.5,
+        borderTopWidth: 0.3,
         alignItems: 'center'
     },
     postOptionItemWrapper: {
@@ -110,9 +113,9 @@ const styles = StyleSheet.create({
     },
     postOptionItemMiddle: {
         borderRightColor: '#ddd',
-        borderRightWidth: 0.5,
+        borderRightWidth: 0.3,
         borderLeftColor: '#ddd',
-        borderLeftWidth: 0.5
+        borderLeftWidth: 0.3
     },
     postOptionIcon: {
         marginRight: 5
@@ -129,7 +132,7 @@ const styles = StyleSheet.create({
         width: "100%",
         borderColor: "#ddd",
         paddingHorizontal: 10,
-        borderWidth: 0.5
+        borderWidth: 0.3
     },
     userAvatar: {
         width: 40,
