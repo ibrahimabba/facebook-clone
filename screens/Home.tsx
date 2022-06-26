@@ -4,13 +4,12 @@ import { useDispatch, useSelector } from "../hooks/react-redux-hooks";
 import { FetchPostsRequest } from '../store/actions/postsActions'
 import { LoginRequest } from '../store/actions/userActions'
 import PostTool from '../components/postTool'
-//import Stories from '../components/Stories'
+import Stories from '../components/Stories/Stories'
 //import RecommendFriends from '../components/RecommendFriends'
-//import Item from '../components/Item'c
+import Item from '../components/Item/Item'
 
 export default function Home() {
     const posts = useSelector(state => state.postsReducer);
-    const user = useSelector(state => state.userReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -23,14 +22,14 @@ export default function Home() {
     return (
         <View>
             <ScrollView bounces={false}>
-                <PostTool></PostTool>
-                {/* <Stories></Stories> */}
-                {/* {data.map((item: any, index: any) => (
+                <PostTool />
+                <Stories />
+                {posts.map((item: any, index: any) => (
                     <View key={index}>
-                        {index === 1 && <RecommendFriends ></RecommendFriends>}
-                        <Item item={item} key={index} ></Item>
+                        {/* {index === 1 && <RecommendFriends />} */}
+                        <Item item={item} key={index} />
                     </View>
-                ))} */}
+                ))}
             </ScrollView>
         </View >
     )
