@@ -5,8 +5,9 @@ import { FetchStoriesRequest } from '../../store/actions/storiesAction'
 import { useDispatch, useSelector } from "../../hooks/react-redux-hooks";
 import StoryAdder from './StoryAdder'
 import Colors from '../../constants/Colors';
+import { HomeScreenProps } from '../../types';
 
-export default function Stories() {
+export default function Stories({navigation, route}: HomeScreenProps) {
 
     const user = useSelector(state => state.userReducer);
     const stories = useSelector(state => state.storiesReducer);
@@ -21,7 +22,7 @@ export default function Stories() {
         <View style={styles.container}>
             <ScrollView showsHorizontalScrollIndicator={false} style={styles.stories} horizontal={true}>
                 <StoryAdder user={user}/>
-                {stories.map((story: any, index: any) => (<Story position={index} key={index} story={story} />))}
+                {stories.map((story: any, index: any) => (<Story position={index} key={index} story={story} navigation={navigation} route={route} />))}
             </ScrollView>
         </View >
     )
