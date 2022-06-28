@@ -1,6 +1,6 @@
 import { MaterialTopTabScreenProps } from '@react-navigation/material-top-tabs';
 import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { StackScreenProps } from '@react-navigation/stack';
 
 declare global {
   namespace ReactNavigation {
@@ -10,12 +10,13 @@ declare global {
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<TopTabParamList> | undefined;
+  StoryDetail: { position: number }
   Modal: undefined;
   NotFound: undefined;
 };
 
 export type HomeStackParamList = {
-  Home: undefined;
+  Home: { position: number } | undefined;
   Comments: undefined;
 };
 
@@ -27,10 +28,12 @@ export type WatchTabStackParamList = {
   Watch: undefined;
 };
 
-export type RootStackScreenProps<Screen extends keyof RootStackParamList> = NativeStackScreenProps<
+export type RootStackScreenProps<Screen extends keyof RootStackParamList> = StackScreenProps<
   RootStackParamList,
   Screen
 >;
+
+export type StoryDetailScreenProps = StackScreenProps<RootStackParamList, 'StoryDetail'>;
 
 export type TopTabParamList = {
   HomeTab: NavigatorScreenParams<HomeStackParamList> | undefined;
@@ -40,5 +43,13 @@ export type TopTabParamList = {
 
 export type TopTabScreenProps<Screen extends keyof TopTabParamList> = CompositeScreenProps<
   MaterialTopTabScreenProps<TopTabParamList, Screen>,
-  NativeStackScreenProps<RootStackParamList>
+  StackScreenProps<RootStackParamList>
+>;
+
+export type HomeScreenProps = CompositeScreenProps<
+  StackScreenProps<RootStackParamList>,
+  CompositeScreenProps<
+    MaterialTopTabScreenProps<TopTabParamList>,
+    StackScreenProps<HomeStackParamList>
+  >
 >;
