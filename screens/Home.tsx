@@ -7,14 +7,15 @@ import PostTool from '../components/postTool'
 import Stories from '../components/Stories/Stories'
 //import RecommendFriends from '../components/RecommendFriends'
 import Item from '../components/Item/Item'
+import { HomeScreenProps } from '../types';
 
-export default function Home() {
+export default function Home({navigation, route}: HomeScreenProps) {
     const posts = useSelector(state => state.postsReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(FetchPostsRequest())
-        dispatch(LoginRequest("vucms", "vucms"))
+        dispatch(LoginRequest("dat09", "dat09"))
     }, [])
 
     if (posts.length === 0) return <View></View>
@@ -23,7 +24,7 @@ export default function Home() {
         <View>
             <ScrollView bounces={false}>
                 <PostTool />
-                <Stories />
+                <Stories navigation={navigation} route={route} />
                 {posts.map((item: any, index: any) => (
                     <View key={index}>
                         {/* {index === 1 && <RecommendFriends />} */}

@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import 'react-native-gesture-handler';
+
 import { Provider } from "react-redux";
 import { BASE_URL } from './constants'
 import axios from 'axios';

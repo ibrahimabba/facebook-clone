@@ -3,12 +3,14 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import postsReducer from './reducers/postsReducer';
 import userReducer from './reducers/userReducer';
 import storiesReducer from './reducers/storiesReducer';
+import showingStroyReducer from './reducers/showingStoryReducer';
 
 const store = configureStore({
   reducer: {
     postsReducer,
     userReducer,
     storiesReducer,
+    showingStroyReducer
   },
   // Adding the api middleware enables caching, invalidation, polling,
   // and other useful features of `rtk-query`.

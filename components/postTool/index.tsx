@@ -47,7 +47,7 @@ export default function PostTool({ isWriteToAnyOne, userX, isWriteToPage, page }
         <View style={styles.container}>
             <View style={styles.postToolWrapper}>
                 <TouchableOpacity activeOpacity={0.5} style={styles.userAvatarWrapper}>
-                    <Image source={usr} style={styles.userAvatar} ></Image>
+                    <Image source={user?.avatar_url ? { uri: user?.avatar_url } : usr} style={styles.userAvatar} ></Image>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={isWriteToAnyOne ? onPressPostToAnyOneHandler : onFullPostToolPressHandler} style={styles.postInputWrapper}>
                     <View style={{ ...styles.postInput, backgroundColor: inputBgColor }}>
@@ -83,9 +83,9 @@ export default function PostTool({ isWriteToAnyOne, userX, isWriteToPage, page }
 
 const styles = StyleSheet.create({
     container: {
-        borderTopColor: '#ddd',
+        //borderTopColor: '#ddd',
         borderTopWidth: 0.3,
-        borderBottomColor: '#ddd',
+        //borderBottomColor: '#ddd',
         borderBottomWidth: 0.3,
         marginTop: 10,
         backgroundColor: Colors.dark.card

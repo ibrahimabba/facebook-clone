@@ -1,20 +1,16 @@
-import React, { Component } from 'react'
 import { View, Text, Image, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
-import navigation from '../../navigation/navigationRef'
-import { TabActions } from '@react-navigation/native';
-
-
-type Props = {
+import { HomeScreenProps } from '../../types'
+interface Props extends HomeScreenProps {
     story: any
     position: number
 }
-export default function Story({ story, position }: Props) {
+
+export default function Story({ story, position, navigation }: Props) {
 
     const onPressHandle = () => {
-        console.log("click")
-        // navigation.navigate("StoryDetail", {
-        //     position: position
-        // })
+        navigation.navigate("StoryDetail", {
+            position: position
+        })
     }
     let displayImagePosition = 0
     for (let image of story.images) {

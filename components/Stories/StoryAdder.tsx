@@ -1,12 +1,12 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native'
 import Icon from '@expo/vector-icons/FontAwesome5'
 
 type Props = {
     user: any
 }
 export default function StoryAdder({ user }: Props) {
-
+    console.log(user.avatar_url)
     return (
         <View style={styles.container}>
             <TouchableOpacity activeOpacity={0.8}>
